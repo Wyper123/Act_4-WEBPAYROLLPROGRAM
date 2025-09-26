@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Display</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="main-form" id="output"></div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('main-form'));
+    const rate = parseFloat(data.rate);
+    const days = parseFloat(data["work-days"]);
+    const grosspay = rate * days;
+
+    const sss = grosspay * 0.05;
+    const pagibig = grosspay * 0.03;
+    const philhealth = grosspay * 0.02;
+    const tax = grosspay * 0.05;
+    const totaldeduction = sss + pagibig + philhealth + tax;
+    const netpay = grosspay - totaldeduction;
+
+    document.getElementById('output').innerHTML = `
+      <div class="h1"><strong>PAYROLL PROGRAM</strong></div>
+      <div class="display"><strong>ID:</strong> ${data.id}</div>
+      <div class="display"><strong>Name:</strong> ${data["last-name"]}, ${data["first-name"]} ${data["middle-name"]}</div>
+      <div class="display"><strong>Position:</strong> ${data.position}</div>
+      <div class="display"><strong>Rate:</strong> ${rate.toFixed(2)}</div>
+      <div class="display"><strong>Days:</strong> ${days}</div>
+      <div class="display"><strong>Gross Pay:</strong> ${grosspay.toFixed(2)}</div>
+      <hr>
+      <div class="h2"><strong>Deductions</strong></div>
+      <div class="display"><strong>SSS (5%):</strong> ${sss.toFixed(2)}</div>
+      <div class="display"><strong>Pag-IBIG (3%):</strong> ${pagibig.toFixed(2)}</div>
+      <div class="display"><strong>PhilHealth (2%):</strong> ${philhealth.toFixed(2)}</div>
+      <div class="display"><strong>Tax (5%):</strong> ${tax.toFixed(2)}</div>
+      <div class="display"><strong>Total Deduction:</strong> ${totaldeduction.toFixed(2)}</div>
+      <div class="display"><strong>Net Pay:</strong> ${netpay.toFixed(2)}</div>
+    `;
+  </script>
+</body>
+</html>

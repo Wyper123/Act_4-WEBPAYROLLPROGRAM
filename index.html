@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Main Page</title>
+</head>
+<body>
+
+    <h1>GRC Payroll</h1>
+    <form id="main-form" class="main-form">
+        <label>ID Number</label>
+        <input type="text" name="id" placeholder="2024-06-00081" required>
+        
+        <label>Last Name</label>
+        <input type="name" name="last-name" placeholder="Coronel" required>
+
+        <label>First Name</label>
+        <input type="name" name="first-name" placeholder="Gian" required>
+
+        <label>Middle Name</label>
+        <input type="name" name="middle-name" placeholder="Reyes" required>
+
+        <label>Position</label>
+        <input type="name" name="position" placeholder="Web Developer" required>
+        <hr>
+        <label>Rate</label>
+        <input type="Number" name="rate" required>
+
+        <label>Work Days</label>
+        <input type="Number" name="work-days" required>
+
+        <button type="submit">Submit</button>
+    </form>
+    <script>
+      document.getElementById('main-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = {};
+      formData.forEach((value, key) => data[key] = value);
+      localStorage.setItem('main-form', JSON.stringify(data));
+      window.location.href = 'display.html';
+    });
+  </script>   
+</body>
+</html>
