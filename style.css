@@ -1,108 +1,249 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
     margin: 0;
-    background-color: #f5f5f5;
+    background-color: #f4f5f7;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
 
-h1 {
-    background-color: #C62828;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-    margin: 20px auto;
-    width: 90%;
-    max-width: 1000px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+hr {
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin: 25px 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
 }
 
 .main-form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
     background-color: white;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border-radius: 5px;
-    margin: 0 auto;
-    padding: 40px;
-    width: 90%;
-    max-width: 900px;
-    height: auto;
+    border-radius: 12px;
+    padding: 30px 40px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    border: 1px solid #e7e7e7;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-header h2 {
+    margin: 0 0 8px 0;
+    font-size: 26px;
+    font-weight: 600;
+    color: #212121;
+}
+
+.form-header p {
+    margin: 0;
+    font-size: 15px;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 10px;
+    font-size: 14px;
     font-weight: 500;
-    width: 100%;
+    color: #444;
+    margin-bottom: 8px;
 }
 
 input {
     width: 100%;
-    padding: 14px;
-    border: 1px solid black;
-    border-radius: 5px;
+    padding: 12px 15px;
     font-size: 14px;
+    font-family: 'Poppins', sans-serif;
     color: #212121;
-    margin-bottom: 20px;
-}
-hr {
-    border: none;
-    height: 2px;
-    width: 100%;
-    margin: 15px 0;
-    background-color: #d92f2f;
-    border-radius: 1px;
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-button {
+input::placeholder {
+    color: #aaa;
+}
+
+input:focus {
+    outline: none;
+    border-color: #c62828;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+button[type="submit"] {
     background-color: #d92f2f;
     color: white;
-    padding: 12px 24px;
+    padding: 14px;
     margin-top: 10px;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 16px;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-.display {
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-.h1 {
-    font-size: 20px;
-    padding: 20px 0;
-    font-weight: 500;
+button[type="submit"]:hover {
+    background-color: #b71c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(217, 47, 47, 0.2);
 }
 
-.h2 {
+.payslip-container {
+    background-color: white;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 40px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.payslip-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.payslip-header h2 {
+    margin: 0 0 5px 0;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.payslip-header p {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+}
+
+.employee-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.employee-details p {
+    margin: 0 0 8px 0;
+}
+
+.separator {
+    border: none;
+    height: 2px;
+    background-color: #d92f2f;
+    margin: 20px 0;
+}
+
+.net-pay-section {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.net-pay-amount {
+    color: #d92f2f;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.paid-days {
+    color: #777;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.summary-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.earnings, .deductions {
+    width: 50%;
+}
+
+.summary-section h3 {
     font-size: 18px;
-    padding: 20px 0;
-    font-weight: 400;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+table th, table td {
+    padding: 10px 0;
+    text-align: left;
+}
+
+table thead th {
+    color: #888;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+}
+
+.amount-col {
+    text-align: right;
+}
+
+table tfoot td {
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+    margin-top: 5px;
 }
 
 @media (max-width: 600px) {
-    h1 {
-        font-size: 1.5rem;
-        padding: 15px 0;
+    body {
+        padding: 10px;
     }
-
-    .main-form {
+    
+    .main-form, .payslip-container {
         padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    input {
-        font-size: 13px;
-        padding: 12px;
+    .input-group {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .summary-section {
+        flex-direction: column;
+        gap: 25px;
     }
 
-    button {
-        font-size: 14px;
-        padding: 10px 20px;
+    .earnings, .deductions {
+        width: 100%;
+    }
+    
+    .net-pay-amount {
+        font-size: 28px;
     }
 }
