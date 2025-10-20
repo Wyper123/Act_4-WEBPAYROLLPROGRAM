@@ -5,19 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
   <title>Display</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #f5f5f5;
-      margin: 0;
-    }
-  </style>
 </head>
 <body>
-  <div class="main-form" id="output"></div>
+  <div class="payslip-container" id="payslip-output">
+    </div>
 
   <script>
     const data = JSON.parse(localStorage.getItem('main-form'));
@@ -32,22 +23,101 @@
     const totaldeduction = sss + pagibig + philhealth + tax;
     const netpay = grosspay - totaldeduction;
 
-    document.getElementById('output').innerHTML = `
-      <div class="h1"><strong>PAYROLL PROGRAM</strong></div>
-      <div class="display"><strong>ID:</strong> ${data.id}</div>
-      <div class="display"><strong>Name:</strong> ${data["last-name"]}, ${data["first-name"]} ${data["middle-name"]}</div>
-      <div class="display"><strong>Position:</strong> ${data.position}</div>
-      <div class="display"><strong>Rate:</strong> ${rate.toFixed(2)}</div>
-      <div class="display"><strong>Days:</strong> ${days}</div>
-      <div class="display"><strong>Gross Pay:</strong> ${grosspay.toFixed(2)}</div>
-      <hr>
-      <div class="h2"><strong>Deductions</strong></div>
-      <div class="display"><strong>SSS (5%):</strong> ${sss.toFixed(2)}</div>
-      <div class="display"><strong>Pag-IBIG (3%):</strong> ${pagibig.toFixed(2)}</div>
-      <div class="display"><strong>PhilHealth (2%):</strong> ${philhealth.toFixed(2)}</div>
-      <div class="display"><strong>Tax (5%):</strong> ${tax.toFixed(2)}</div>
-      <div class="display"><strong>Total Deduction:</strong> ${totaldeduction.toFixed(2)}</div>
-      <div class="display"><strong>Net Pay:</strong> ${netpay.toFixed(2)}</div>
+    document.getElementById('payslip-output').innerHTML = `
+      <div class="payslip-header">
+        <h2>GRC Payroll</h2>
+        <p>Employee Pay Summary</p>
+      </div>
+
+      <div class="employee-details">
+        <div class="details-left">
+            <p><strong>Last Name</strong></p>
+            <p>${data["last-name"]}</p>
+            <p><strong>First Name</strong></p>
+            <p>${data["first-name"]}</p>
+            <p><strong>Middle Name</strong></p>
+            <p>${data["middle-name"]}</p>
+
+        </div>
+        <div class="details-right">
+            <p><strong>Position</strong></p>
+            <p>${data.position}</p>
+            <p><strong>ID Number</strong></p>
+            <p>${data.id}</p>
+        </div>
+      </div>
+
+      <hr class="separator">
+
+      <div class="summary-section">
+        <div class="earnings">
+            <h3>Earnings</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th class="amount-col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rate per Day</td>
+                        <td class="amount-col">₱${rate.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Work Days</td>
+                        <td class="amount-col">${days}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Gross Earnings</td>
+                        <td class="amount-col">₱${grosspay.toFixed(2)}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <div class="deductions">
+            <h3>Deductions</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th class="amount-col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>SSS (5%)</td>
+                        <td class="amount-col">₱${sss.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>Pag-IBIG (3%)</td>
+                        <td class="amount-col">₱${pagibig.toFixed(2)}</td>
+                    </tr>
+                    <tr>
+                        <td>PhilHealth (2%)</td>
+                        <td class="amount-col">₱${philhealth.toFixed(2)}</td>
+                    </tr>
+                     <tr>
+                        <td>Tax (5%)</td>
+                        <td class="amount-col">₱${tax.toFixed(2)}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total Deductions</td>
+                        <td class="amount-col">₱${totaldeduction.toFixed(2)}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+      </div>
+
+      <div class="net-pay-section">
+        <p class="net-pay-amount">₱${netpay.toFixed(2)}</p>
+        <p class="paid-days">Paid Days : ${days}</p>
+      </div>
     `;
   </script>
 </body>
